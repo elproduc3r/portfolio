@@ -63,39 +63,6 @@
         });
     };
 
-
-   /* OffCanvas Menu
-    * ------------------------------------------------------ */
-    var clOffCanvas = function() {
-
-        var menuTrigger     = $('.header-menu-toggle'),
-            nav             = $('.header-nav'),
-            closeButton     = nav.find('.header-nav__close'),
-            siteBody        = $('body'),
-            mainContents    = $('section, footer');
-
-        // open-close menu by clicking on the menu icon
-        menuTrigger.on('click', function(e){
-            e.preventDefault();
-            siteBody.toggleClass('menu-is-open');
-        });
-
-        // close menu by clicking the close button
-        closeButton.on('click', function(e){
-            e.preventDefault();
-            menuTrigger.trigger('click');
-        });
-
-        // close menu clicking outside the menu itself
-        siteBody.on('click', function(e){
-            if( !$(e.target).is('.header-nav, .header-nav__content, .header-menu-toggle, .header-menu-toggle span') ) {
-                siteBody.removeClass('menu-is-open');
-            }
-        });
-
-    };
-
-
    /* photoswipe
     * ----------------------------------------------------- */
     var clPhotoswipe = function() {
@@ -354,7 +321,6 @@
         clPreloader();
         //menu
         clMenuOnScrolldown();
-        clOffCanvas();
 
         // clPhotoswipe();
         // clStatCount();
