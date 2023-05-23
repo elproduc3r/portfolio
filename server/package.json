@@ -1,0 +1,25 @@
+{
+  "name": "server",
+  "version": "0.0.0",
+  "private": true,
+  "main": "app.js",
+  "scripts": {
+    "start:prod": "NPM_CONFIG_PRODUCTION=false node ./bin/www",
+    "start": "node app.js",
+    "start:dev": "NODE_ENV=development PORT=5000 nodemon app.js"
+  },
+  "dependencies": {
+    "debug": "~2.6.9",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-graphql": "^0.12.0",
+    "graphql": "^15.8.0",
+    "jade": "^0.29.0",
+    "mongoose": "^7.1.1",
+    "nodemon": "^2.0.22",
+    "unfetch": "^5.0.0"
+  },
+  "devDependencies": {
+    "colors": "^1.4.0"
+  }
+}

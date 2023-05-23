@@ -1,0 +1,45 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "My Portfolio",
+  "scripts": {
+    "build:client": "sh tasks/buildClient.sh",
+    "client": "npm run start --prefix ./client",
+    "client:dev": "npm run start:dev --prefix ./client",
+    "clean": "rm -rf node_modules && rm -rf ./server/node_modules && rm -rf ./client/node_modules && rm package-lock.json && rm ./server/package-lock.json && rm ./client/package-lock.json",
+    "preinstall": "sh tasks/preinstall.sh",
+    "server": "npm run start --prefix ./server",
+    "start": "npm run build:client && NODE_ENV=production && npm run server",
+    "start:dev": "npm run start:dev --prefix ./server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elproduc3r/portfolio.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/elproduc3r/portfolio.git/issues"
+  },
+  "homepage": "https://github.com/elproduc3r/portfolio.git#readme",
+  "engines": {
+    "node": "16.20.0",
+    "npm": "8.19.4"
+  },
+  "devDependencies": {
+    "concurrently": "^8.0.1",
+    "nodemon": "^2.0.22"
+  },
+  "dependencies": {
+    "colors": "^1.4.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-graphql": "^0.12.0",
+    "graphql": "^15.8.0",
+    "http-errors": "^2.0.0",
+    "mongoose": "^7.2.0",
+    "node": "^16.20.0",
+    "npm": "^8.19.4"
+  }
+}
