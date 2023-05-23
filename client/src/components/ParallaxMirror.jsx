@@ -29,7 +29,9 @@ const ParallaxMirror = () => {
       <img
         className="parallax-slider"
         src="images/hero-bg.jpg"
-        style={parallaxMirrorImgStyles} />
+        style={parallaxMirrorImgStyles}
+        alt=""
+      />
     </div>
   )
 };
