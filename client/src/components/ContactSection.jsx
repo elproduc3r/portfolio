@@ -41,8 +41,9 @@ const ContactSection = () => {
           </div>
         </div>
         <div className="cl-go-top" style={{"display": "none"}}>
-          <a className="smoothscroll" title="Back to Top" href="#top"><i
-              className="icon-arrow-up" aria-hidden="true"></i></a>
+          <a className="smoothscroll" title="Back to Top" href="#top">
+            <i className="icon-arrow-up" aria-hidden="true"></i>
+          </a>
         </div>
       </section>
   );

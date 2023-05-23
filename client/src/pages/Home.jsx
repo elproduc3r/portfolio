@@ -1,4 +1,3 @@
-import {useRef, forwardRef} from "react";
 import ParallaxMirror from "../components/ParallaxMirror";
 import Pace from "../components/Pace";
 import Header from "../components/Header";
