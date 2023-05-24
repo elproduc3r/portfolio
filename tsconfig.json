@@ -1,13 +1,19 @@
 {
-  "compoilerOptions": {
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
-    "target": "ES2020",
-    "sourceMap": true,
-    "outDir": "dist",
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "importHelpers": true,
+    "module": "commonjs",
+    "rootDirs": ["src", ".storybook"],
+    "strict": true,
+    "target": "es2019",
+    "jsx": "react-jsx",
+    "typeRoots": ["./node_modules/@types"],
+    "noImplicitAny": true,
+    "skipLibCheck": true,
+    "baseUrl": "./"
   },
   "include":[
-    "client/**/*",
-    "server/**/*",
-  ]
+    "client/src/components"
+  ],
 }

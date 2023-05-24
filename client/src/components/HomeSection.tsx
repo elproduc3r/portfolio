@@ -1,5 +1,5 @@
 
-function HomeSection() {
+const HomeSection = () => {
 
   const homeLinks = [
     {
@@ -54,9 +54,9 @@ function HomeSection() {
               <li key={`${i}-text`}>
                 <a 
                   className="smoothscroll"
-                  target={link.target || null}
+                  target={link.target || undefined}
                   href={href}
-                  rel={link.target === "_blank" ? "noreferrer" : null}
+                  rel={link.target === "_blank" ? "noreferrer" : undefined}
                 >
                   {link.text}
                   <span>{link.description}</span>
