@@ -1,5 +1,18 @@
+import { useEffect } from "react";
 
 const ContactSection = () => {
+
+  useEffect(() => {
+    window?.AOS.init( {
+      offset: 200,
+      duration: 200,
+      easing: 'ease-in-sine',
+      delay: 50,
+      once: true,
+      disable: 'mobile'
+    });
+  }, []);
+
   return (
     <section id="contact" className="s-contact">
         <div className="row section-header aos-init" data-aos="fade-up">
