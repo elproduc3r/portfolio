@@ -40,8 +40,8 @@ function HomeSection() {
             Web Developer
           </h1>
           <p>
-            NodeJS • React • JavaScript(ES6) • TypeScript<br />
-            Cloud • PHP • MySQL • REST APIs<br/>
+            NodeJS • React • JavaScript(ES6) • TypeScript •<br />
+            Cloud • PHP • MySQL • REST APIs •<br/>
             Mobile Games/Apps • iOS • Android
           </p>
         </div>
