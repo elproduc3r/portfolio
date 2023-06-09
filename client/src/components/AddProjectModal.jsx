@@ -52,10 +52,90 @@ export default function AddProjectModal() {
             className='btn btn-primary'
             data-bs-toggle='modal'
             data-bs-target='#addProjectModal'
+            onClick={() => {window?.$('#addProjectModal').modal()}}
           >
             <FaList className='icon' />
             New Project
           </button>
+
+          <div className="modal fade" tabIndex="-1" role="dialog" id='addProjectModal'>
+            <div className="modal-dialog" role="document">
+              <div className="modal-content">
+                <form onSubmit={onSubmit}>
+                  <div className="modal-header">
+                    <button type="button" className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 className="modal-title">New Interview</h4>
+                  </div>
+                  <div className="modal-body">
+                  
+                      <div>
+                        <label className='form-label'>Name</label>
+                        <input
+                          type='text'
+                          className='form-control'
+                          id='name'
+                          value={name}
+                          onChange={(e) => setName(e.target.value)}
+                        />
+                      </div>
+                      <div>
+                        <label className='form-label'>Description</label>
+                        <input
+                          type='text'
+                          className='form-control'
+                          id='description'
+                          value={description}
+                          onChange={(e) => setDescription(e.target.value)}
+                        />
+                      </div>
+                      <div style={{display: "flex", justifyContent: "space-around", flexWrap: "nowrap"}}>
+                        <div>
+                          <label className='form-label'>Status</label>
+                          <select
+                            id='status'
+                            className='form-select'
+                            value={status}
+                            onChange={(e) => setStatus(e.target.value)}
+                          >
+                            <option value='new'>Not Started</option>
+                            <option value='progress'>In Progress</option>
+                            <option value='completed'>Completed</option>
+                          </select>
+                        </div>
+
+                        <div>
+                          <label className='form-label'>Client</label>
+                          <select
+                            id='clientId'
+                            className='form-select'
+                            value={clientId}
+                            onChange={(e) => setClientId(e.target.value)}
+                          >
+                            <option value=''>Select Client</option>
+                            {data.clients.map((client) => (
+                              <option key={client.id} value={client.id}>
+                                {client.name}
+                              </option>
+                            ))}
+                          </select>
+                        </div>
+                      </div>
+                      
+                  </div>
+                  <div className="modal-footer">
+                    <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
+                    <button
+                        type='submit'
+                        data-bs-dismiss='modal'
+                        className='btn btn-primary'
+                      >
+                        Submit
+                      </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
 
           {/* <div
             className='modal fade'
@@ -77,65 +157,7 @@ export default function AddProjectModal() {
                   ></button>
                 </div>
                 <div className='modal-body'>
-                  <form onSubmit={onSubmit}>
-                    <div className='mb-3'>
-                      <label className='form-label'>Name</label>
-                      <input
-                        type='text'
-                        className='form-control'
-                        id='name'
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                      />
-                    </div>
-                    <div className='mb-3'>
-                      <label className='form-label'>Description</label>
-                      <textarea
-                        className='form-control'
-                        id='description'
-                        value={description}
-                        onChange={(e) => setDescription(e.target.value)}
-                      ></textarea>
-                    </div>
-                    <div className='mb-3'>
-                      <label className='form-label'>Status</label>
-                      <select
-                        id='status'
-                        className='form-select'
-                        value={status}
-                        onChange={(e) => setStatus(e.target.value)}
-                      >
-                        <option value='new'>Not Started</option>
-                        <option value='progress'>In Progress</option>
-                        <option value='completed'>Completed</option>
-                      </select>
-                    </div>
-
-                    <div className='mb-3'>
-                      <label className='form-label'>Client</label>
-                      <select
-                        id='clientId'
-                        className='form-select'
-                        value={clientId}
-                        onChange={(e) => setClientId(e.target.value)}
-                      >
-                        <option value=''>Select Client</option>
-                        {data.clients.map((client) => (
-                          <option key={client.id} value={client.id}>
-                            {client.name}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-
-                    <button
-                      type='submit'
-                      data-bs-dismiss='modal'
-                      className='btn btn-primary'
-                    >
-                      Submit
-                    </button>
-                  </form>
+                  
                 </div>
               </div>
             </div>

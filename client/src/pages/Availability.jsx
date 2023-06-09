@@ -17,7 +17,7 @@ const Home = () => {
           <AddProjectModal /> 
         </div>  
       </section>
-      <section>
+      <section className="pd-top-4">
         <div className="row block-1-8 block-m-1-2" style={{display: "flex"}}>
           <Projects />
         </div>
