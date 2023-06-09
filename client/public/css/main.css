@@ -2224,7 +2224,7 @@ html.cl-loaded .home-content__main {
  * # services
  *
  * ------------------------------------------------------------------- */
-.s-services {
+ .s-services {
   padding-top: 10rem;
   padding-bottom: 18rem;
   color: #555555;
@@ -3260,5 +3260,30 @@ html.cl-loaded .home-content__main {
     display: none;
   }
 }
+
+
+/* ------------------------------------------------------------------- 
+ * ## custom overrides
+ * ------------------------------------------------------------------- */
+ a.light {
+  color: black;
+}
+
+.header-menu-toggle.light {
+  background-color: black;
+}
+
+section {
+  padding: 14rem 0 1rem 0;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  color: #ffffff;
+  border-width: 0px;
+  border-radius: 8px;
+}
+
 
 /*# sourceMappingURL=main.css.map */

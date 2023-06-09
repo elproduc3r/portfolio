@@ -4,21 +4,27 @@ const cors = require('cors');
 const colors = require('colors');
 const express = require('express');
 const path = require('path');
+const { graphqlHTTP } = require('express-graphql');
+const schema = require('./schema/schema');
+const connectDB = require('./config/db');
 
 const port = process.env.PORT || "5000";
 const app = express();
-
-
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 
-/* GET api */
-app.use('/api', function(req, res, next) {
-  return res.json({"users": ["user1", "user2", "user3", "user4"]});
-});
+connectDB();
+
+app.use(
+  '/graphql',
+  graphqlHTTP({
+    schema,
+    graphiql: process.env.NODE_ENV === 'development',
+  })
+);
 
 /* GET front end */
 const publicDirectory = path.join(__dirname, "/public");
