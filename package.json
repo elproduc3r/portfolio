@@ -35,6 +35,7 @@
     "express": "^4.18.2",
     "express-graphql": "^0.12.0",
     "mongoose": "^7.0.0",
-    "react-scripts": "^5.0.1"
+    "react-scripts": "^5.0.1",
+    "react-dom": "^18.2.0"
   }
 }
