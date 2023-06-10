@@ -7,7 +7,7 @@ export const NavContext = createContext({
 });
 
 const PageContainer = (props) => {
-  const {children} = props;
+  const {bgColor, children} = props;
   const [isNavOpen, setIsNavOpen] = useState(false); 
   const elementRef = useRef();
 
@@ -30,6 +30,7 @@ const PageContainer = (props) => {
       <div
         ref={elementRef}
         onClick={closeNav}
+        style={{backgroundColor: bgColor}}
       >
         {children}
       </div>
