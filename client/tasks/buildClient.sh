@@ -1,7 +1,7 @@
 GREEN=$'\e[0;32m'
 echo ""
 echo "${GREEN}Running build script in /client${NC}"
-cd client
+pwd
 npm run build
 echo ""
 ls -la build
