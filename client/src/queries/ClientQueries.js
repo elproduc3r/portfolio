@@ -6,7 +6,7 @@ export const GET_CLIENTS = gql`
       name
       id
       email
-      phone
+      person
     }
   }
 `

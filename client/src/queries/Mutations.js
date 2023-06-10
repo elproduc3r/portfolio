@@ -6,7 +6,7 @@ export const DELETE_CLIENT = gql`
       id
       name
       email
-      phone
+      person
     }
   }
 `;

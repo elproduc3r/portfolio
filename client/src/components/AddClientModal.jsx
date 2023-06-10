@@ -7,10 +7,10 @@ import { GET_CLIENTS } from '../queries/ClientQueries';
 export default function AddClientModal() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
+  const [person, setPerson] = useState('');
 
   const [addClient] = useMutation(ADD_CLIENT, {
-    variables: { name, email, phone },
+    variables: { name, email, person },
     update(cache, { data: { addClient } }) {
       const { clients } = cache.readQuery({ query: GET_CLIENTS });
 
@@ -24,15 +24,15 @@ export default function AddClientModal() {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    if (name === '' || email === '' || phone === '') {
+    if (name === '' || email === '' || person === '') {
       return alert('Please fill in all fields');
     }
 
-    addClient(name, email, phone);
+    addClient(name, email, person);
 
     setName('');
     setEmail('');
-    setPhone('');
+    setPerson('');
   };
 
   return (
@@ -73,8 +73,8 @@ export default function AddClientModal() {
                     type='text'
                     className='form-control'
                     id='phone'
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
+                    value={person}
+                    onChange={(e) => setPerson(e.target.value)}
                   />
                 </div>
                 <div className='mb-3'>
@@ -102,32 +102,6 @@ export default function AddClientModal() {
           </div>
         </div>
       </div>
-
-      {/* <div
-        className='modal fade'
-        id='addClientModal'
-        aria-labelledby='addClientModalLabel'
-        aria-hidden='true'
-      >
-        <div className='modal-dialog'>
-          <div className='modal-content'>
-            <div className='modal-header'>
-              <h5 className='modal-title' id='addClientModalLabel'>
-                Add Client
-              </h5>
-              <button
-                type='button'
-                className='btn-close'
-                data-bs-dismiss='modal'
-                aria-label='Close'
-              ></button>
-            </div>
-            <div className='modal-body'>
-              
-            </div>
-          </div>
-        </div>
-      </div> */}
     </>
   );
 }

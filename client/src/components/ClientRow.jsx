@@ -4,7 +4,7 @@ import { DELETE_CLIENT } from "../queries/Mutations";
 import {GET_CLIENTS} from "../queries/ClientQueries";
 
 const ClientRow = ({client}) => {
-  const {name, email, phone} = client;
+  const {name, email, person} = client;
   const [deleteClient] = useMutation(DELETE_CLIENT, {
     variables: { id: client.id },
     update(cache, {data: {deleteClient}}) {
@@ -29,7 +29,7 @@ const ClientRow = ({client}) => {
         {name}
       </td>
       <td>
-        {phone}
+        {person}
       </td>
       <td>
         {email}
