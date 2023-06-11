@@ -3,7 +3,7 @@ import {useMutation} from "@apollo/client";
 import { DELETE_CLIENT } from "../queries/Mutations";
 import {GET_CLIENTS} from "../queries/ClientQueries";
 
-const ClientRow = ({client}) => {
+const CompanyRow = ({client}) => {
   const {name, email, person} = client;
   const [deleteClient] = useMutation(DELETE_CLIENT, {
     variables: { id: client.id },
@@ -46,4 +46,4 @@ const ClientRow = ({client}) => {
   )
 };
 
-export default ClientRow;
+export default CompanyRow;

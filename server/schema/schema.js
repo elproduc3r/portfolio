@@ -7,16 +7,16 @@ const {
   GraphQLNonNull,
   GraphQLEnumType,
 } = require('graphql');
-const Project = require('../models/Project.js');
+const Interview = require('../models/Interview.js');
 const Client = require('../models/Client.js');
 
-const ProjectType = new GraphQLObjectType({
-  name: 'Project',
+const InterviewType = new GraphQLObjectType({
+  name: 'Interview',
   fields: () => ({
     id: {type: GraphQLID},
     clientId: {type: GraphQLString},
     name: {type: GraphQLString},
-    description: {type: GraphQLString},
+    type: {type: GraphQLString},
     status: {type: GraphQLString},
     client: {
       type: ClientType,
@@ -46,10 +46,10 @@ const RootQuery = new GraphQLObjectType({
         return Client.find();
       },
     },
-    projects: {
-      type: new GraphQLList(ProjectType),
+    interviews: {
+      type: new GraphQLList(InterviewType),
       resolve(parent, args) {
-        return Project.find();
+        return Interview.find();
       },
     },
     client: {
@@ -59,11 +59,11 @@ const RootQuery = new GraphQLObjectType({
         return Client.findById(args.id);
       },
     },
-    project: {
-      type: ProjectType,
+    interview: {
+      type: InterviewType,
       args: {id: {type: GraphQLID}},
       resolve(parent, args) {
-        return Project.findById(args.id);
+        return Interview.findById(args.id);
       },
     },
   }
@@ -89,33 +89,30 @@ const mutation = new GraphQLObjectType({
         return client.save();
       },
     },
-    addProject: {
-      type: ProjectType,
+    addInterview: {
+      type: InterviewType,
       args: {
-        name: {type: GraphQLNonNull(GraphQLString)},
-        description: {type: GraphQLNonNull(GraphQLString)},
+        type: {type: GraphQLNonNull(GraphQLString)},
         status: {
           type: new GraphQLEnumType({
-            name: 'ProjectStatus',
+            name: 'InterviewStatus',
             values: {
-              'new': {value: 'Not Started'},
-              'progress': {value: 'In Progress'},
-              'completed': {value: 'Complete'},
+              'upcoming': {value: 'upcoming'},
+              'completed': {value: 'completed'},
             },
           }),
-          defaultValue: 'Not Started',
+          defaultValue: 'upcoming',
         },
         clientId: {type: GraphQLNonNull(GraphQLID)}
       },
       resolve (parent, args) {
-        const {clientId, name, description, status} = args;
-        const project = new Project({
+        const {clientId, type, status} = args;
+        const interview = new Interview({
           clientId,
-          name,
-          description,
+          type,
           status,
         });
-        return project.save();
+        return interview.save();
       },
     },
     deleteClient: {
@@ -127,13 +124,13 @@ const mutation = new GraphQLObjectType({
         return Client.findByIdAndRemove(args.id);
       },
     },
-    deleteProject: {
-      type: ProjectType,
+    deleteInterview: {
+      type: InterviewType,
       args: {
         id: {type: GraphQLNonNull(GraphQLString)}
       },
       resolve(parent, args) {
-        return Project.findByIdAndRemove(args.id);
+        return Interview.findByIdAndRemove(args.id);
       },
     },
     updateClient: {
@@ -158,31 +155,28 @@ const mutation = new GraphQLObjectType({
         });
       },
     },
-    updateProject: {
-      type: ProjectType,
+    updateInterview: {
+      type: InterviewType,
       args: {
         id: {type: GraphQLID},
-        name: {type: GraphQLString},
-        description: {type: GraphQLString},
+        type: {type: GraphQLString},
         clientId: {type: GraphQLID},
         status: {
           type: new GraphQLEnumType({
-            name: 'ProjectStatusUpdate',
+            name: 'InterviewStatusUpdate',
             values: {
-              'new': {value: 'Not Started'},
-              'progress': {value: 'In Progress'},
-              'completed': {value: 'Complete'},
+              'upcoming': {value: 'upcoming'},
+              'completed': {value: 'completed'},
             },
           }),
         },
       },
       resolve(parent, args){
         const {id, name, description, status, clientId} = args;
-        return Project.findByIdAndUpdate(args.id, {
+        return Interview.findByIdAndUpdate(args.id, {
           $set: {
             id,
-            name,
-            description,
+            type,
             status,
             clientId,
           }

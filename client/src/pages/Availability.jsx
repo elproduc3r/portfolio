@@ -1,10 +1,15 @@
 import Pace from "../components/Pace";
 import Header from "../components/Header";
 import PageContainer from "../components/PageContainer";
-import Clients from '../components/Clients';
-import Projects from '../components/Projects';
+import Companies from '../components/Companies';
+import Interviews from '../components/Interviews';
 import AddClientModal from '../components/AddClientModal';
-import AddProjectModal from '../components/AddProjectModal';
+import AddInterviewModal from '../components/AddInterviewModal';
+
+const tableContainerStyle = {
+  display: "flex",
+  flexDirection: "column"
+};
 
 const Home = () => {
   return (
@@ -12,18 +17,18 @@ const Home = () => {
       <Pace />
       <Header mode="light" />
       <section>
-        <div className="row block-1-8 block-m-1-2" style={{display: "flex"}}>
+        <div className="row" style={{display: "flex"}}>
           <AddClientModal />
-          <AddProjectModal /> 
+          <AddInterviewModal /> 
         </div>  
       </section>
       <section className="pd-top-4">
-        <div className="row block-1-8 block-m-1-2" style={{display: "flex"}}>
-          <Projects />
+        <div className="row" style={tableContainerStyle}>
+          <Interviews />
         </div>
         <hr />
-        <div className="row block-1-8 block-m-1-2" style={{display: "flex"}}>
-          <Clients />
+        <div className="row" style={tableContainerStyle}>
+          <Companies />
         </div>
       </section>
     </PageContainer>

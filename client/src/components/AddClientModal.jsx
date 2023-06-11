@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FaUser } from 'react-icons/fa';
+import { FaCity } from 'react-icons/fa';
 import { useMutation } from '@apollo/client';
 import { ADD_CLIENT } from '../mutations/ClientMutations';
 import { GET_CLIENTS } from '../queries/ClientQueries';
@@ -44,7 +44,7 @@ export default function AddClientModal() {
         data-bs-target='#addClientModal'
         onClick={() => {window?.$('#addClientModal').modal()}}
       >
-        <FaUser className='icon' />
+        <FaCity className='icon' />
         Add Company
       </button>
 
