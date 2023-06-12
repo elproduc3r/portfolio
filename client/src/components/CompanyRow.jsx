@@ -26,18 +26,18 @@ const CompanyRow = ({client}) => {
         {client.id}
       </td>
       <td>
-        {name}
+        {"*******"}
       </td>
       <td>
-        {person}
+        {"*******"}
       </td>
       <td>
-        {email}
+        {"*******"}
       </td>
       <td>
         <button
           className='btn btn-danger btn-sm'
-          onClick={deleteClient}  
+          // onClick={deleteClient}
         >
           <FaTrash />
         </button>

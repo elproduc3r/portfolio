@@ -30,7 +30,7 @@ export default function InterviewCard({ interview }) {
   return (
     <tr style={{backgroundColor: color}}>
       <td>
-        {client.name}
+        {"*******"}
       </td>
       <td>
         {time}
@@ -39,7 +39,7 @@ export default function InterviewCard({ interview }) {
         {date}
       </td>
       <td>
-        {client.person}
+        {"*******"}
       </td>
       <td>
         {type}
@@ -50,7 +50,7 @@ export default function InterviewCard({ interview }) {
       <td>
       <button
           className='btn btn-danger btn-sm'
-          onClick={deleteInterview}  
+          // onClick={deleteInterview}  
         >
           <FaTrash />
         </button>
