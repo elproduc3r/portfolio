@@ -50,7 +50,7 @@ export default function InterviewCard({ interview }) {
       <td>
       <button
           className='btn btn-danger btn-sm'
-          // onClick={deleteInterview}  
+          onClick={()=>{alert('This feature has been disabled for demo purposes')}}  
         >
           <FaTrash />
         </button>

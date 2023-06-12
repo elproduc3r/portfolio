@@ -37,7 +37,7 @@ const CompanyRow = ({client}) => {
       <td>
         <button
           className='btn btn-danger btn-sm'
-          // onClick={deleteClient}
+          onClick={() => {alert('This feature has been disabled for demo purposes')}}
         >
           <FaTrash />
         </button>
