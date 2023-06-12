@@ -7,7 +7,7 @@
     "client:dev": "npm run start:dev --prefix ./client",
     "clean": "rm -rf node_modules && rm -rf ./server/node_modules && rm -rf ./client/node_modules && rm package-lock.json && rm ./server/package-lock.json && rm ./client/package-lock.json",
     "preinstall": "sh tasks/preinstall.sh",
-    "start": "NODE_ENV=production && node server/app.js",
+    "start": "NODE_ENV=production node server/app.js",
     "start:dev": "nodemon server/app.js"
   },
   "repository": {

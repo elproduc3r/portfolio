@@ -6,10 +6,9 @@
   "scripts": {
     "start": "react-scripts start",
     "start:dev": "nodemon react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && tasks/buildClient.sh",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "postinstall": "tasks/buildClient.sh"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
