@@ -24,10 +24,8 @@ const cache = new InMemoryCache({
   },
 });
 
-console.log(`PORT:${process.env.PORT}`);
-
 const client = new ApolloClient({
-  uri: 'http://localhost:5000/graphql',
+  uri: '/graphql',
   cache,
 });
 
