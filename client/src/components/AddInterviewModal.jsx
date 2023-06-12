@@ -9,14 +9,17 @@ export default function AddInterviewModal() {
   const [type, setType] = useState('');
   const [clientId, setClientId] = useState('');
   const [status, setStatus] = useState('upcoming');
+  const [time, setTime] = useState('');
+  const [convertedTime, setConvertedTime] = useState('');
+  const [date, setDate] = useState('');
 
   const [addInterview] = useMutation(ADD_INTERVIEW, {
-    variables: { type, clientId, status },
+    variables: { type, clientId, status, time: convertedTime, date },
     update(cache, { data: { addInterview } }) {
-      const { projects } = cache.readQuery({ query: GET_INTERVIEWS });
+      const { interviews } = cache.readQuery({ query: GET_INTERVIEWS });
       cache.writeQuery({
         query: GET_INTERVIEWS,
-        data: { projects: [...projects, addInterview] },
+        data: { interviews: [...interviews, addInterview] },
       });
     },
   });
@@ -24,17 +27,32 @@ export default function AddInterviewModal() {
   // Get Clients for select
   const { loading, error, data } = useQuery(GET_CLIENTS);
 
+  const convertAndSetTime = (time) => {
+    setTime(time);
+    let [hours, mins] = time.split(":");
+    hours = Number(hours);
+    const amPm = hours < 12 ? "am" : "pm";
+    hours = hours > 12 ? Number(hours) - 12 : hours;
+    console.log(`setting: ${hours}:${mins} ${amPm} `)
+    setConvertedTime(`${hours}:${mins} ${amPm}`);
+  }
+
   const onSubmit = (e) => {
     e.preventDefault();
 
-    if (clientId === '' || type === '' || status === '') {
+    if (clientId === '' || type === '' || status === '' || time ==='' || date === '') {
       return alert('Please fill in all fields');
     }
 
-    addInterview(type, clientId, status);
+    addInterview(type, clientId, status, convertedTime, date);
 
+    window?.$('#addInterviewModal').modal('hide');
+
+    setTime('');
+    setConvertedTime('');
+    setDate('');
     setType('');
-    setStatus('new');
+    setStatus('upcoming');
     setClientId('');
   };
 
@@ -82,6 +100,28 @@ export default function AddInterviewModal() {
                         ))}
                       </select>
                     </div>
+                    <div style={{display: "flex", flexWrap: "nowrap", justifyContent: "flex-start"}}>
+                      <div style={{width: "40%"}}>
+                        <label className='form-label'>Time</label>
+                        <input
+                          type='time'
+                          className='form-control time'
+                          id='time'
+                          value={time}
+                          onChange={(e) => convertAndSetTime(e.target.value)}
+                        />
+                      </div>
+                      <div style={{width: "40%"}}>
+                        <label className='form-label'>Date</label>
+                        <input
+                          type='date'
+                          className='form-control time'
+                          id='date'
+                          value={date}
+                          onChange={(e) => setDate(e.target.value)}
+                        />
+                      </div>
+                    </div>
                     <div>
                       <label className='form-label'>Type</label>
                       <input
@@ -92,7 +132,7 @@ export default function AddInterviewModal() {
                         onChange={(e) => setType(e.target.value)}
                       />
                     </div>
-                    <div style={{display: "flex", justifyContent: "space-around", flexWrap: "nowrap"}}>
+                    <div style={{display: "flex", justifyContent: "flex-start", flexWrap: "nowrap"}}>
                       <div>
                         <label className='form-label'>Status</label>
                         <select

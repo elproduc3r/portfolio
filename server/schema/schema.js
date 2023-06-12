@@ -18,6 +18,8 @@ const InterviewType = new GraphQLObjectType({
     name: {type: GraphQLString},
     type: {type: GraphQLString},
     status: {type: GraphQLString},
+    time: {type: GraphQLString},
+    date: {type: GraphQLString},
     client: {
       type: ClientType,
       resolve(parent, args) {
@@ -103,13 +105,17 @@ const mutation = new GraphQLObjectType({
           }),
           defaultValue: 'upcoming',
         },
+        time: {type: GraphQLNonNull(GraphQLString)},
+        date: {type: GraphQLNonNull(GraphQLString)},
         clientId: {type: GraphQLNonNull(GraphQLID)}
       },
       resolve (parent, args) {
-        const {clientId, type, status} = args;
+        const {clientId, type, status, time, date} = args;
         const interview = new Interview({
           clientId,
           type,
+          time,
+          date,
           status,
         });
         return interview.save();
@@ -118,7 +124,7 @@ const mutation = new GraphQLObjectType({
     deleteClient: {
       type: ClientType,
       args: {
-        id: {type: GraphQLNonNull(GraphQLString)}
+        id: {type: GraphQLNonNull(GraphQLID)}
       },
       resolve(parent, args) {
         return Client.findByIdAndRemove(args.id);
@@ -127,7 +133,7 @@ const mutation = new GraphQLObjectType({
     deleteInterview: {
       type: InterviewType,
       args: {
-        id: {type: GraphQLNonNull(GraphQLString)}
+        id: {type: GraphQLNonNull(GraphQLID)}
       },
       resolve(parent, args) {
         return Interview.findByIdAndRemove(args.id);
@@ -160,6 +166,8 @@ const mutation = new GraphQLObjectType({
       args: {
         id: {type: GraphQLID},
         type: {type: GraphQLString},
+        time: {type: GraphQLString},
+        date: {type: GraphQLString},
         clientId: {type: GraphQLID},
         status: {
           type: new GraphQLEnumType({
@@ -172,12 +180,14 @@ const mutation = new GraphQLObjectType({
         },
       },
       resolve(parent, args){
-        const {id, name, description, status, clientId} = args;
+        const {id, type, time, status, clientId} = args;
         return Interview.findByIdAndUpdate(args.id, {
           $set: {
             id,
             type,
             status,
+            time,
+            date,
             clientId,
           }
         },

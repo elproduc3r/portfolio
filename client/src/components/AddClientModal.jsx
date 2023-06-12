@@ -30,6 +30,8 @@ export default function AddClientModal() {
 
     addClient(name, email, person);
 
+    window?.$('#addClientModal').modal('hide')
+
     setName('');
     setEmail('');
     setPerson('');

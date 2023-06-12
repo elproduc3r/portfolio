@@ -6,6 +6,8 @@ const GET_INTERVIEWS = gql`
       id
       type
       status
+      time
+      date
       client {
         id
         name
@@ -22,6 +24,8 @@ const GET_INTERVIEW = gql`
       id
       type
       status
+      time
+      date
       client {
         id
         name

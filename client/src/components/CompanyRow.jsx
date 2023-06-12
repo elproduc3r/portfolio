@@ -1,6 +1,6 @@
 import { FaTrash } from "react-icons/fa";
 import {useMutation} from "@apollo/client";
-import { DELETE_CLIENT } from "../queries/Mutations";
+import { DELETE_CLIENT } from "../mutations/ClientMutations";
 import {GET_CLIENTS} from "../queries/ClientQueries";
 
 const CompanyRow = ({client}) => {

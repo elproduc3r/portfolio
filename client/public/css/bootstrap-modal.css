@@ -211,18 +211,23 @@
 
 .modal input {
   width: 80%;
+  font-size: 1.7rem;
+  color: #000000;
+}
+
+.modal input.time, .modal input.date{
+  width: 90%;
 }
 
 .modal input, .modal select {
   height: 4rem;
   padding: 1rem 2.4rem;
-  font-size: 1.2rem;
   margin-bottom: 1rem;
 }
 
 .close {
   float: right;
-  font-size: 15px;
+  font-size: 3rem;
   font-weight: normal;
   line-height: 1;
   color: black;

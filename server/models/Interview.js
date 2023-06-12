@@ -6,7 +6,13 @@ const InterviewSchema = new mongoose.Schema({
   },
   status: {
     type: String,
-    enum: ['upcoming', 'completed'],
+    enum: ['upcoming', 'completed']
+  },
+  time: {
+    type: String
+  },
+  date: {
+    type: String
   },
   clientId: {
     type: mongoose.Schema.Types.ObjectId,
