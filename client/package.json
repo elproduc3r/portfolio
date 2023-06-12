@@ -6,7 +6,7 @@
   "scripts": {
     "start": "react-scripts start",
     "start:dev": "nodemon react-scripts start",
-    "build": "react-scripts build && tasks/buildClient.sh",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "postinstall": "sh tasks/buildClient.sh"
