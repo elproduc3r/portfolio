@@ -1,7 +1,14 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState} from "react";
 import { NavContext } from "../PageContainer";
 
 const HeaderNav = () => {
+  const [pathname, setPathname] = useState("");
+  useEffect(() => {
+    if(window.location.pathname !== "/") {
+      setPathname("/");
+    }
+  },[]);
+
   const {closeNav} = useContext(NavContext);
   return (
     <nav className="header-nav">
@@ -17,13 +24,13 @@ const HeaderNav = () => {
           <h3>FullStack Studio</h3>
           <ul className="header-nav__list">
             <li className="current">
-              <a className="smoothscroll" href="#home" title="home">Home</a>
+              <a className="smoothscroll" href={`${pathname}#home`} title="home">Home</a>
             </li>
             <li>
-              <a className="smoothscroll" href="#about" title="about">About</a>
+              <a className="smoothscroll" href={`${pathname}#about`} title="about">About</a>
             </li>
             <li>
-              <a className="smoothscroll" href="#services" title="services">Services</a>
+              <a className="smoothscroll" href={`${pathname}#services`} title="services">Services</a>
             </li>
             <li>
               <a
@@ -37,7 +44,7 @@ const HeaderNav = () => {
               </a>
             </li>
             <li>
-              <a className="smoothscroll" href="#contact" title="contact">Contact</a>
+              <a className="smoothscroll" href={`${pathname}#contact`} title="contact">Contact</a>
             </li>
           </ul>
           <p>

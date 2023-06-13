@@ -8,7 +8,7 @@
     "clean": "rm -rf node_modules && rm -rf ./server/node_modules && rm -rf ./client/node_modules && rm package-lock.json && rm ./server/package-lock.json && rm ./client/package-lock.json",
     "preinstall": "sh tasks/preinstall.sh",
     "start": "NODE_ENV=production node server/app.js",
-    "start:dev": "nodemon server/app.js"
+    "start:dev": "concurrently \"nodemon server/app.js\" \"npm run client:dev\""
   },
   "repository": {
     "type": "git",
@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "colors": "^1.4.0",
+    "concurrently": "^8.2.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
