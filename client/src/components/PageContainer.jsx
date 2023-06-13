@@ -9,6 +9,7 @@ export const NavContext = createContext({
 const PageContainer = (props) => {
   const {bgColor, children} = props;
   const [isNavOpen, setIsNavOpen] = useState(false); 
+
   const elementRef = useRef();
 
   const openNav = (event) => {

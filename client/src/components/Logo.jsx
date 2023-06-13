@@ -1,6 +1,8 @@
+import { useContext } from "react";
+import { ModeContext } from "./ModeContext";
 
 const Logo = (props) => {
-  const {mode = "dark"} = props;
+  const {mode} = useContext(ModeContext);
   const logoSrc = mode === "dark" ? "images/logo2.png" : "images/logo2-light.png";
   return (
     <div className="header-logo">

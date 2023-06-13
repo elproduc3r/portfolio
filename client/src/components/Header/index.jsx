@@ -3,9 +3,10 @@ import classnames from "classnames";
 import Logo from "../Logo";
 import HeaderNav from "./HeaderNav";
 import { NavContext } from "../PageContainer";
+import { ModeContext } from "../ModeContext";
 
-const Header = (props) => {
-  const {mode = "dark"} = props;
+const Header = () => {
+  const {mode} = useContext(ModeContext);
   const {openNav} = useContext(NavContext);
   const [opaqueClass, setOpaqueClass] = useState("");
 
@@ -21,7 +22,7 @@ const Header = (props) => {
 
   return (
     <header className="s-header">
-      <Logo mode={mode} />
+      <Logo />
       <HeaderNav />
       <a
         className={classnames('header-menu-toggle', opaqueClass, mode)} 
