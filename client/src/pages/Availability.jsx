@@ -8,7 +8,8 @@ import AddInterviewModal from '../components/AddInterviewModal';
 
 const tableContainerStyle = {
   display: "flex",
-  flexDirection: "column"
+  flexDirection: "column",
+  overflowX: "auto"
 };
 
 const Home = () => {
@@ -17,7 +18,7 @@ const Home = () => {
       <Pace />
       <Header mode="light" />
       <section>
-        <div className="row" style={{display: "flex"}}>
+        <div className="row" style={{display: "flex", flexWrap: "wrap"}}>
           <AddClientModal />
           <AddInterviewModal /> 
         </div>  

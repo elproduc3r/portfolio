@@ -3275,6 +3275,7 @@ html.cl-loaded .home-content__main {
 
 section {
   padding: 14rem 0 1rem 0;
+  overflow: hidden;
 }
 
 section.pd-top-4 {
