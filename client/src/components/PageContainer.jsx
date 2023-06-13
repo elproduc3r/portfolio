@@ -1,4 +1,4 @@
-import { createContext, useState, useRef } from "react";
+import { createContext, useState, useRef, useEffect } from "react";
 
 export const NavContext = createContext({
   isNavOpen: false,
@@ -23,6 +23,16 @@ const PageContainer = (props) => {
     setIsNavOpen(false);
     event.stopPropagation();
   };
+
+  useEffect(() => {
+    const hash = window.location.hash;
+    const target = hash !== "" ? window.$(hash) : null;
+    if(hash && target?.offset()){
+      window.$('html, body').stop().animate({
+        'scrollTop': window.$(hash).offset().top
+      }, 400, 'swing');
+    }
+  })
 
   return (
     <NavContext.Provider
