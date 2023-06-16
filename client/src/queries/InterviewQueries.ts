@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client';
 
-const GET_INTERVIEWS = gql`
+export const GET_INTERVIEWS = gql`
   query getInterviews {
     interviews {
       id
@@ -11,14 +11,12 @@ const GET_INTERVIEWS = gql`
       client {
         id
         name
-        email
-        person
       }
     }
   }
 `;
 
-const GET_INTERVIEW = gql`
+export const GET_INTERVIEW = gql`
   query getInterview($id: ID!) {
     interview(id: $id) {
       id
@@ -29,11 +27,7 @@ const GET_INTERVIEW = gql`
       client {
         id
         name
-        email
-        person
       }
     }
   }
 `;
-
-export { GET_INTERVIEWS, GET_INTERVIEW };

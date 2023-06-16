@@ -4,7 +4,7 @@ import { DELETE_CLIENT } from "../mutations/ClientMutations";
 import {GET_CLIENTS} from "../queries/ClientQueries";
 
 const CompanyRow = ({client}) => {
-  const {name, email, person} = client;
+  const {name = "******", email = "******", person = "******"} = client;
   const [deleteClient] = useMutation(DELETE_CLIENT, {
     variables: { id: client.id },
     update(cache, {data: {deleteClient}}) {
@@ -23,21 +23,18 @@ const CompanyRow = ({client}) => {
   return (
     <tr>
       <td>
-        {client.id}
+        {name || "*****"}
       </td>
       <td>
-        {"*******"}
+        {person || "*****"}
       </td>
       <td>
-        {"*******"}
-      </td>
-      <td>
-        {"*******"}
+        {email || "*****"}
       </td>
       <td>
         <button
           className='btn btn-danger btn-sm'
-          onClick={() => {alert('This feature has been disabled for demo purposes')}}
+          onClick={() => {deleteClient() || alert('This feature has been disabled for demo purposes')}}
         >
           <FaTrash />
         </button>

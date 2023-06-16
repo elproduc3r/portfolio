@@ -1,3 +1,4 @@
+import React from "react";
 import { useContext, useEffect, useState} from "react";
 import { NavContext } from "../PageContainer";
 
@@ -16,7 +17,7 @@ const HeaderNav = () => {
           href="#0"
           className="header-nav__close"
           title="close"
-          onClick={(event) => closeNav(event)}
+          onClick={closeNav}
         >
           <span>Close</span>
         </a>

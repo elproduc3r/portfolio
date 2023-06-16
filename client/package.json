@@ -5,7 +5,7 @@
   "proxy": "http://localhost:5000",
   "scripts": {
     "start": "react-scripts start",
-    "start:dev": "nodemon react-scripts start",
+    "start:dev": "NODE_ENV=development nodemon react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
@@ -46,10 +46,12 @@
     "react-icons": "^4.8.0",
     "react-router-dom": "^6.11.2",
     "react-scripts": "^5.0.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "webpack": "^5.87.0"
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@types/node": "^20.3.1",
     "jest-worker": "^29.5.0",
     "nodemon": "^2.0.22"
   }

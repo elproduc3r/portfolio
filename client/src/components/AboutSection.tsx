@@ -1,5 +1,6 @@
+import React from "react";
 
-const AboutSection = () => {
+const AboutSection = (): JSX.Element => {
   return (
     <section id="about" className="s-about">
         <div className="row section-header aos-init" data-aos="fade-up">

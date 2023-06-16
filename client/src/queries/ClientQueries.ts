@@ -5,8 +5,6 @@ export const GET_CLIENTS = gql`
     clients {
       name
       id
-      email
-      person
     }
   }
-`
+`;

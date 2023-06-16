@@ -18,7 +18,6 @@ const Clients = () => {
           <table className='table table-hover mt-3'>
             <thead>
               <tr>
-                <th>Id</th>
                 <th>Company</th>
                 <th>Person</th>
                 <th>Email</th>
