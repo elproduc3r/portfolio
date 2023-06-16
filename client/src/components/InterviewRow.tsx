@@ -1,11 +1,10 @@
 import { useMutation } from "@apollo/client";
-import styled from "@emotion/styled";
 import { FaTrash } from "react-icons/fa";
 import { DELETE_INTERVIEW } from "../mutations/InterviewMutations";
 import { GET_INTERVIEWS } from "../queries/InterviewQueries";
 
 export default function InterviewCard({ interview }) {
-  const {client, type, status, time, date} = interview;
+  const {client = {name: "******", person: "******"}, type, status, time, date} = interview;
   const [deleteInterview] = useMutation(DELETE_INTERVIEW, {
     variables: {id: interview.id},
     update(cache, {data: {deleteInterview}}) {
@@ -30,7 +29,7 @@ export default function InterviewCard({ interview }) {
   return (
     <tr style={{backgroundColor: color}}>
       <td>
-        {"*******"}
+        {client.name}
       </td>
       <td>
         {time}
@@ -39,7 +38,7 @@ export default function InterviewCard({ interview }) {
         {date}
       </td>
       <td>
-        {"*******"}
+        {client.person || "******"}
       </td>
       <td>
         {type}

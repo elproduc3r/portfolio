@@ -5,15 +5,6 @@ export const GET_CLIENTS = gql`
     clients {
       name
       id
-      email
-      person
     }
   }
-`
-export const GET_CLIENTS_PRIVATE = gql`
-  query getClients {
-    clients {
-      id
-    }
-  }
-`
+`;

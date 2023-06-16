@@ -38,7 +38,7 @@ const PageContainer = (props) => {
         'scrollTop': window.$(hash).offset().top
       }, 400, 'swing');
     }
-  })
+  });
 
   return (
     <NavContext.Provider

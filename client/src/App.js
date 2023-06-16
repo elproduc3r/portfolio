@@ -31,21 +31,17 @@ const client = new ApolloClient({
 
 function App() {
 
-  const env = process.env.NODE_ENV || "development"
-
   return (
-    <EnvContext.Provider value={{env}}>
-      <ApolloProvider client={client}>
-        <Router>
-          <Routes>
-              <Route path="/" element={<Layout />}>
-                <Route index path="/" element={<Home />} />
-                <Route path="availability" element={<Availability />} />
-              </Route> 
-          </Routes>
-        </Router>
-      </ApolloProvider>
-    </EnvContext.Provider>
+    <ApolloProvider client={client}>
+      <Router>
+        <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route index path="/" element={<Home />} />
+              <Route path="availability" element={<Availability />} />
+            </Route> 
+        </Routes>
+      </Router>
+    </ApolloProvider>
   );
 }
 
