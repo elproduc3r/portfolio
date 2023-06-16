@@ -1,10 +1,15 @@
+import {useContext} from "react";
 import {useQuery} from "@apollo/client";
 import CompanyRow from "./CompanyRow";
 import Spinner from "./Spinner";
-import {GET_CLIENTS} from "../queries/ClientQueries";
+import EnvContext from "./EnvContext";
+import {GET_CLIENTS, GET_CLIENTS_PRIVATE} from "../queries/ClientQueries";
 
 const Clients = () => {
-  const {loading, errors, data} = useQuery(GET_CLIENTS);
+  const {env} = useContext(EnvContext);
+  const IS_PRIVATE = env !== "development";
+  const getQuery = IS_PRIVATE ? GET_CLIENTS_PRIVATE : GET_CLIENTS;
+  const {loading, errors, data} = useQuery(getQuery);
 
   if (loading) return (<Spinner />);
   if (errors) return (<div>{`Errors: ${errors}`}</div>);
@@ -18,7 +23,6 @@ const Clients = () => {
           <table className='table table-hover mt-3'>
             <thead>
               <tr>
-                <th>Id</th>
                 <th>Company</th>
                 <th>Person</th>
                 <th>Email</th>

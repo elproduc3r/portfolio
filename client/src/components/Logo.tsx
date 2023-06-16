@@ -1,5 +1,6 @@
+import React from "react";
 import { useContext } from "react";
-import { ModeContext } from "./ModeContext";
+import ModeContext from "./ModeContext";
 
 const Logo = () => {
   const {mode} = useContext(ModeContext);

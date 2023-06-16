@@ -1,5 +1,6 @@
+import React from "react";
 
-const Pace = () => {
+const Pace = (): JSX.Element => {
   return (
     <div
       className="pace  pace-inactive"

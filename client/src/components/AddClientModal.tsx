@@ -1,3 +1,4 @@
+import React from "react";
 import { useState } from 'react';
 import { FaCity } from 'react-icons/fa';
 import { useMutation } from '@apollo/client';
@@ -12,7 +13,7 @@ export default function AddClientModal() {
   const [addClient] = useMutation(ADD_CLIENT, {
     variables: { name, email, person },
     update(cache, { data: { addClient } }) {
-      const { clients } = cache.readQuery({ query: GET_CLIENTS });
+      const { clients }: any = cache.readQuery({ query: GET_CLIENTS });
 
       cache.writeQuery({
         query: GET_CLIENTS,
@@ -28,7 +29,7 @@ export default function AddClientModal() {
       return alert('Please fill in all fields');
     }
 
-    addClient(name, email, person);
+    addClient();
 
     window?.$('#addClientModal').modal('hide')
 
@@ -50,7 +51,7 @@ export default function AddClientModal() {
         Add Company
       </button>
 
-      <div className="modal fade" tabIndex="-1" role="dialog" id='addClientModal'>
+      <div className="modal fade" tabIndex={-1} role="dialog" id='addClientModal'>
         <div className="modal-dialog" role="document">
           <div className="modal-content">
             <form onSubmit={onSubmit}>

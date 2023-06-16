@@ -10,3 +10,10 @@ export const GET_CLIENTS = gql`
     }
   }
 `
+export const GET_CLIENTS_PRIVATE = gql`
+  query getClients {
+    clients {
+      id
+    }
+  }
+`

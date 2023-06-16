@@ -1,6 +1,12 @@
-import { createContext, useState, useRef, useEffect } from "react";
+import React, { createContext, useState, useRef, useEffect, MouseEventHandler } from "react";
 
-export const NavContext = createContext({
+interface NavContextType {
+  isNavOpen: boolean;
+  openNav: MouseEventHandler<HTMLAnchorElement>;
+  closeNav: MouseEventHandler<HTMLAnchorElement>;
+}
+
+export const NavContext = createContext<NavContextType>({
   isNavOpen: false,
   openNav: () => {},
   closeNav: () => {},
@@ -10,16 +16,16 @@ const PageContainer = (props) => {
   const {bgColor, children} = props;
   const [isNavOpen, setIsNavOpen] = useState(false); 
 
-  const elementRef = useRef();
+  const elementRef = useRef<HTMLDivElement>(null);
 
-  const openNav = (event) => {
-    elementRef?.current.classList.add("menu-is-open");
+  const openNav = (event): void => {
+    elementRef?.current?.classList.add("menu-is-open");
     setIsNavOpen(true);
     event.stopPropagation();
   };
 
   const closeNav = (event) => {
-    elementRef?.current.classList.remove("menu-is-open");
+    elementRef?.current?.classList.remove("menu-is-open");
     setIsNavOpen(false);
     event.stopPropagation();
   };

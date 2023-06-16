@@ -1,5 +1,7 @@
+import React from "react";
+import {ServiceTypes} from "./types";
 
-const ServiceCard = (props) => {
+const ServiceCard = (props: ServiceTypes): JSX.Element => {
   const {name, description} = props;
   return (
     <div className="col-block service-item aos-init" data-aos="fade-up">

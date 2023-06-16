@@ -6,7 +6,7 @@ import AboutSection from "../components/AboutSection";
 import ServiceSection from "../components/ServicesSection";
 import ContactSection from "../components/ContactSection";
 import PageContainer from "../components/PageContainer";
-import { ModeContext } from "../components/ModeContext";
+import ModeContext from "../components/ModeContext";
 
 const Home = () => {
   return (

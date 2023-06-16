@@ -1,3 +1,4 @@
+import React from "react";
 import Pace from "../components/Pace";
 import Header from "../components/Header";
 import PageContainer from "../components/PageContainer";
@@ -5,17 +6,18 @@ import Companies from '../components/Companies';
 import Interviews from '../components/Interviews';
 import AddClientModal from '../components/AddClientModal';
 import AddInterviewModal from '../components/AddInterviewModal';
-import { ModeContext } from "../components/ModeContext";
+import ModeContext from "../components/ModeContext";
 
 const tableContainerStyle = {
-  display: "flex",
-  flexDirection: "column",
-  overflowX: "auto"
-};
+  display: 'flex',
+  flexDirection: 'column',
+  overflowX: 'auto'
+} as const;
 
-const Home = () => {
+const Home = (): JSX.Element => {
 
   return (
+
     <ModeContext.Provider value={{mode: "light"}}>
       <PageContainer bgColor="#ffffff">
         <Pace />

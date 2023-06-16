@@ -3,15 +3,14 @@
     "jsx": "react",
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
-    "rootDirs": ["client/src", "server/src"],
-    "target": "ES2020",
+    "rootDirs": ["client/src"],
     "sourceMap": true,
+    "target": "ES2020",
     "types": ["node"],
     "outDir": "dist",
   },
   "include":[
     "client/src/*",
-    "server/**/*"
   ],
   "exclude": ["node_modules"]
 }

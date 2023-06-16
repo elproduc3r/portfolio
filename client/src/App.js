@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from "./pages/Home";
-import ImageGallery from "./pages/ImageGallery";
 import Layout from "./pages/Layout";
 import Availability from "./pages/Availability";
+import EnvContext from "./components/EnvContext";
 import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client';
 
 const cache = new InMemoryCache({
@@ -30,18 +30,22 @@ const client = new ApolloClient({
 });
 
 function App() {
+
+  const env = process.env.NODE_ENV || "development"
+
   return (
-    <ApolloProvider client={client}>
-      <Router>
-        <Routes>
-            <Route path="/" element={<Layout />}>
-              <Route index path="/" element={<Home />} />
-              <Route path="image-gallery" element={<ImageGallery />} />
-              <Route path="availability" element={<Availability />} />
-            </Route> 
-        </Routes>
-      </Router>
-    </ApolloProvider>
+    <EnvContext.Provider value={{env}}>
+      <ApolloProvider client={client}>
+        <Router>
+          <Routes>
+              <Route path="/" element={<Layout />}>
+                <Route index path="/" element={<Home />} />
+                <Route path="availability" element={<Availability />} />
+              </Route> 
+          </Routes>
+        </Router>
+      </ApolloProvider>
+    </EnvContext.Provider>
   );
 }
 
